@@ -19,12 +19,13 @@ public class Phones {
     private String filePath;
 
     public String getPhoneString() {
-        String str = "";
+        String str = "Номера: ";
         for (String s : getPhoneList()) {
-            //System.out.println(s);
+            System.out.println(s);
+            str += s + ", ";
         }
-        System.out.println(str);
-            return "Номера: +380930001122, 06134665174, 06131772141, +38006131471193";
+        System.out.println("str: " + str);
+        return "Номера: +380930001122, 06134665174, 06131772141, +38006131471193";
     }
 
     public List<String> getPhoneList() {

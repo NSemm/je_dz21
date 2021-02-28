@@ -15,7 +15,7 @@ public class WriteToFile {
                 Path.of("out.txt"),
                 StandardOpenOption.APPEND)) {
             ByteBuffer buffer = ByteBuffer.allocate(1024);
-            buffer.put(new String("s\n")
+            buffer.put(new String(s + "\n")
                     .getBytes());
             buffer.flip();
             channel.write(buffer);
