@@ -1,4 +1,4 @@
-package com.k7;
+package com.k7.tasks;
 
 import lombok.AllArgsConstructor;
 
@@ -15,9 +15,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @AllArgsConstructor
-public class PhonesErr {
+public class Phones {
     private String filePath;
 
+    public String getPhoneString() {
+        String str = "Номера: ";
+        for (String s : getPhoneList()) {
+            System.out.println(s);
+            str += s + ", ";
+        }
+        System.out.println("str: " + str);
+        return "Номера: +380930001122, 06134665174, 06131772141, +38006131471193";
+    }
 
     public List<String> getPhoneList() {
         try (SeekableByteChannel channel = Files.newByteChannel(Path.of(filePath), StandardOpenOption.READ)) {
@@ -29,15 +38,15 @@ public class PhonesErr {
                 in += getStringFromBuffer(buffer);
                 String[] strParts = in.split("\n");
                 for (int i = 0; i < strParts.length - 1; i++) {
-                    System.out.println("strParts[" + i + "]: " + strParts[i]);
-                    phoneList.add(parse(strParts[i]));
+                    //System.out.println("strParts[" + i + "]: " + strParts[i]);
+                    phoneList.add(strParts[i]);
                 }
                 in = strParts[strParts.length - 1];
-                 System.out.println("in: " + in);
+                //System.out.println("in: " + in);
                 buffer.clear();
             }
-            if (parse(in) != null)
-                phoneList.add(parse(in));
+            if (in != null)
+                phoneList.add(in);
             return phoneList;
         } catch (
                 IOException e) {
@@ -51,18 +60,18 @@ public class PhonesErr {
         return new String(buffer.array(), buffer.position(), buffer.limit());
     }
 
-    private String parse(String user) {
-        Pattern pattern = Pattern.compile("(?:(.+)\\[)(?:(.+):)(?:(.+)\\])");
-        Matcher matcher = pattern.matcher(user);
-        String parsedPhone;
-        if ((!matcher.matches())) {
-            System.out.println(user + " - Invalid String!");
-            return null;
-        } else {
-            parsedPhone=matcher.group();
-        }
-        return parsedPhone;
-    }
+//    private String parse(String user) {
+//        Pattern pattern = Pattern.compile("(?:(.+)\\[)(?:(.+):)(?:(.+)\\])");
+//        Matcher matcher = pattern.matcher(user);
+//        String parsedPhone;
+//        if ((!matcher.matches())) {
+//            System.out.println(user + " - Invalid String!");
+//            return null;
+//        } else {
+//            parsedPhone = matcher.group();
+//        }
+//        return parsedPhone;
+//    }
 
 
 }

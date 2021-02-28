@@ -1,4 +1,4 @@
-package com.k7;
+package com.k7.tasks;
 
 import lombok.AllArgsConstructor;
 
@@ -22,7 +22,7 @@ public class Numbers {
         for (int i = 0; i < n; i++) {
             sum += getNumbers().get(i);
         }
-        return sum.toString();
+        return "Сумма: " + sum.toString();
     }
 
     private List<Integer> getNumbers() {

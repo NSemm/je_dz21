@@ -1,5 +1,7 @@
-package com.k7;
+package com.k7.runnable;
 
+import com.k7.WriteToFile;
+import com.k7.tasks.Fibo;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

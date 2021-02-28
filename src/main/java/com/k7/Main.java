@@ -1,6 +1,13 @@
 package com.k7;
 
 
+import com.k7.runnable.FiboRunnable;
+import com.k7.runnable.NumbersRunnable;
+import com.k7.runnable.PhoneRunnable;
+import com.k7.tasks.Fibo;
+import com.k7.tasks.Numbers;
+import com.k7.tasks.Phones;
+
 public class Main {
 
     public static void main(String[] args) {
